@@ -11,28 +11,32 @@
 header {
     display: grid;
     align-items: center;
-    grid-template-columns: repeat(15, 1fr);
+    grid-template-columns: 1fr 1fr 1fr;
     height: var(--header-height);
 }
 
-header > img:first-of-type {
-    justify-self: end;
+header > div {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+header > div > img {
     height: var(--img-height);
     width: auto;
 }
 
-header > span {
+header > div > span {
     font-family: var(--font-style);
     font-size: var(--font-size);
 }
 
-header > img:last-of-type {
-    justify-self: center;
-    grid-column: 8;
+header > img {
     height: var(--img-add-height);
+    justify-self: center;
 }
 
-header > img:last-of-type:hover {
+header > img:hover {
     cursor: pointer;
     animation: rotate 0.6s forwards;
 }
@@ -43,13 +47,6 @@ header > img:last-of-type:hover {
     }
     100% {
         transform: rotate(180deg);
-    }
-}
-
-/* if touch screen turn off animation */
-@media (hover: none) {
-    header > img:last-of-type:hover {
-        animation: none;
     }
 }
 
