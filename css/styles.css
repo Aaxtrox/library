@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Preahvihear&display=swap');
+
+:root {
+    --font-style: 'Preahvihear', sans-serif;
+    --img-height: 1.8rem;
+    --img-add-height: 2.2rem;
+    --font-size: 2.2rem;
+    --header-height: 10vh;
+}
+
+header {
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(15, 1fr);
+    height: var(--header-height);
+}
+
+header > img:first-of-type {
+    justify-self: end;
+    height: var(--img-height);
+    width: auto;
+}
+
+header > span {
+    font-family: var(--font-style);
+    font-size: var(--font-size);
+}
+
+header > img:last-of-type {
+    justify-self: center;
+    grid-column: 8;
+    height: var(--img-add-height);
+}
+
+header > img:last-of-type:hover {
+    cursor: pointer;
+    animation: rotate 0.6s forwards;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(180deg);
+    }
+}
+
+/* if touch screen turn off animation */
+@media (hover: none) {
+    header > img:last-of-type:hover {
+        animation: none;
+    }
+}
+
+/*media queries*/
+@media screen and (max-width: 1000px) {
+    html {
+        font-size: 80%;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    html {
+        font-size: 75%;
+    }
+}
