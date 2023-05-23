@@ -7,6 +7,7 @@
     --img-add-height: 2.2rem;
     --font-size: 2.2rem;
     --header-height: 10vh;
+    --margin-left: 0.5rem;
     /* popup */
     --popup-width: 20vw;
     --popup-height: 50vh;
@@ -30,6 +31,7 @@ header > div {
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    margin-left: var(--margin-left);
 }
 
 header > div > img {
@@ -40,6 +42,7 @@ header > div > img {
 header > div > span {
     font-family: var(--font-style);
     font-size: var(--font-size);
+    margin-left: var(--margin-left);
 }
 
 header > img {
@@ -73,6 +76,15 @@ header > img:hover {
     background-color: var(--popup-background-color);
     border: var(--popup-border);
     border-radius: var(--popup-border-radius);
+}
+
+/*form*/
+#popup > form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100%;
 }
 
 /*media queries*/
