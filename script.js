@@ -1,5 +1,6 @@
 addButton = document.getElementById('addButton');
 discard = document.getElementById('discard');
+
 addButton.addEventListener('click', () => {
     // change pop up display to block
     document.getElementById('popup').style.display = 'block';
