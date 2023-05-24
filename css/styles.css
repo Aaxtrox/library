@@ -11,11 +11,14 @@
     --margin-left: 0.5rem;
     /* popup */
     --popup-width: fit-content;
-    --popup-height: fit-content;
+    --popup-height: 55vh;
     --popup-top: 50%;
     --popup-left: 50%;
     --popup-border-radius: 20px;
     --popup-background-color: #f5f5f4;
+    /* scroll bar */
+    --scrollbar-width: 15px;
+    --scrollbar-thumb-color: #888;
     /* form */
     --form-font-family: 'Prompt', sans-serif;
     --form-font-size: 1.8rem;
@@ -29,7 +32,7 @@
     --tickBox-margin: 20px auto;
     --tickBox-span-margin-right: 1.5rem;
     /* buttons */
-    --button-margin-bottom: 2rem;
+    --button-margin-div: 2rem;
     --button-height: 5vh;
     --button-width: 8vw;
     --button-margin: 0 1rem;
@@ -98,6 +101,20 @@ header > img:hover {
     height: var(--popup-height);
     background-color: var(--popup-background-color);
     border-radius: var(--popup-border-radius);
+    overflow: auto;
+}
+
+/* scroll bar */
+#popup::-webkit-scrollbar {
+    width: var(--scrollbar-width);
+}
+
+#popup::-webkit-scrollbar-track {
+    background: var(--popup-background-color);
+}
+
+#popup::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb-color);
 }
 
 /*form*/
@@ -194,7 +211,7 @@ form > div:first-of-type > input:focus {
 form > div:last-of-type {
     display: flex;
     flex-direction: row;
-    margin-bottom: var(--button-margin-bottom);
+    margin: var(--button-margin-div);
 }
 
 form > div:last-of-type > button {
@@ -221,7 +238,7 @@ form > div:last-of-type > button:last-child:hover {
     background-color: var(--button-last-hover-background-color);
 }
 
-/*media queries*/
+/* media queries */
 @media screen and (max-width: 1500px) {
     form > div:last-of-type {
         flex-direction: column;
