@@ -238,6 +238,12 @@ form > div:last-of-type > button:last-child:hover {
     background-color: var(--button-last-hover-background-color);
 }
 
+/* hoover effect off for mobile */
+@media (hover: none) {
+    .readBox label:hover::after {
+        opacity: 0;
+    }
+}
 /* media queries */
 @media screen and (max-width: 1500px) {
     form > div:last-of-type {
