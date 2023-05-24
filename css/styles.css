@@ -10,12 +10,34 @@
     --header-height: 10vh;
     --margin-left: 0.5rem;
     /* popup */
-    --popup-width: 20vw;
-    --popup-height: 60vh;
-    --popup-top: 20vh;
-    --popup-left: 40vw;
+    --popup-width: fit-content;
+    --popup-height: fit-content;
+    --popup-top: 50%;
+    --popup-left: 50%;
     --popup-border-radius: 20px;
     --popup-background-color: #f5f5f4;
+    /* form */
+    --form-font-family: 'Prompt', sans-serif;
+    --form-font-size: 1.8rem;
+    --form-span-margin: 2rem;
+    --input-height: 5vh;
+    --input-width: 80%;
+    --input-margin: .8rem 0;
+    --input-padding: 0 1.5rem;
+    --input-border-radius: 5px;
+    /* tick box */
+    --tickBox-margin: 20px auto;
+    --tickBox-span-margin-right: 1.5rem;
+    /* buttons */
+    --button-margin-bottom: 2rem;
+    --button-height: 5vh;
+    --button-width: 8vw;
+    --button-margin: 0 1rem;
+    --button-border-radius: 5px;
+    --button-background-color: #fde68a;
+    --button-last-background-color: #dc2626;
+    --button-hover-background-color: #fbbf24;
+    --button-last-hover-background-color: #991b1b;
 }
 
 /* header */
@@ -70,6 +92,7 @@ header > img:hover {
     position: fixed;
     top: var(--popup-top);
     left: var(--popup-left);
+    transform: translate(-50%, -50%);
     z-index: 100;
     width: var(--popup-width);
     height: var(--popup-height);
@@ -78,65 +101,52 @@ header > img:hover {
 }
 
 /*form*/
-#popup > form {
+form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    height: 100%;
-}
-
-form {
-    font-family: 'Prompt', sans-serif;
-    font-size: 1.8rem;
+    font-family: var(--form-font-family);
+    font-size: var(--form-font-size);
 }
 
 form > span {
-    margin-top: 2rem;
-    font-family: 'Prompt', sans-serif;
+    margin: var(--form-span-margin);
 }
 
 form > div:first-of-type {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 }
 
 form > div:first-of-type > input {
-    height: 5vh;
-    width: 80%;
-    margin: 1rem 0;
-    padding: 0 1.5rem;
+    height: var(--input-height);
+    width: var(--input-width);
+    margin: var(--input-margin);
+    padding: var(--input-padding);
     border: none;
-    border-radius: 5px;
+    border-radius: var(--input-border-radius);
 }
 
 form > div:first-of-type > input:focus {
     outline: none;
 }
 
-form > div:first-of-type > input::placeholder {
-    font-size: 1.8rem;
-}
-
 /* tick box */
-
 .container {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    margin: var(--tickBox-margin);
 }
 
 .container > span {
-    margin-right: 1.5rem;
+    margin-right: var(--tickBox-span-margin-right);
 }
 
 .readBox {
     width: 20px;
     position: relative;
-    margin: 20px auto;
 }
 
 .readBox label {
@@ -144,8 +154,9 @@ form > div:first-of-type > input::placeholder {
     height: 20px;
     cursor: pointer;
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background: #fcfff4;
     background: linear-gradient(to bottom, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
     border-radius: 4px;
@@ -179,42 +190,39 @@ form > div:first-of-type > input::placeholder {
     opacity: 1;
 }
 
+/* buttons */
 form > div:last-of-type {
     display: flex;
     flex-direction: row;
-    margin-bottom: 2rem;
+    margin-bottom: var(--button-margin-bottom);
 }
 
 form > div:last-of-type > button {
-    height: 5vh;
-    width: 8vw;
-    margin: 0 1rem;
+    height: var(--button-height);
+    width: var(--button-width);
+    margin: var(--button-margin);
     border: none;
-    border-radius: 5px;
-    background-color: #fde68a;
+    border-radius: var(--button-border-radius);
+    background-color: var(--button-background-color);
     box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 form > div:last-of-type > button:last-child {
-    background-color: #dc2626;
+    background-color: var(--button-last-background-color);
 }
 
 form > div:last-of-type > button:hover {
     cursor: pointer;
     transition: .6s;
-    background-color: #fbbf24;
+    background-color: var(--button-hover-background-color);
 }
 
 form > div:last-of-type > button:last-child:hover {
-    background-color: #991b1b;
+    background-color: var(--button-last-hover-background-color);
 }
 
 /*media queries*/
 @media screen and (max-width: 1500px) {
-    #popup {
-        width: 25vw;
-        left: 37.5vw;
-    }
     form > div:last-of-type {
         flex-direction: column;
     }
@@ -224,29 +232,15 @@ form > div:last-of-type > button:last-child:hover {
     }
 }
 
-@media screen and (max-width: 1200px) {
-    #popup {
-        width: 30vw;
-        left: 35vw;
-    }
-}
 @media screen and (max-width: 1000px) {
     html {
         font-size: 80%;
-    }
-    #popup {
-        width: 35vw;
-        left: 32.5vw;
     }
 }
 
 @media screen and (max-width: 750px) {
     html {
         font-size: 75%;
-    }
-    #popup {
-        width: 60vw;
-        left: 20vw;
     }
     .container {
         flex-direction: column;
