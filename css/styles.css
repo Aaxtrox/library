@@ -11,7 +11,7 @@
     --margin-left: 0.5rem;
     /* popup */
     --popup-width: fit-content;
-    --popup-height: 55vh;
+    --popup-height: 65vh;
     --popup-top: 50%;
     --popup-left: 50%;
     --popup-border-radius: 20px;
@@ -238,12 +238,6 @@ form > div:last-of-type > button:last-child:hover {
     background-color: var(--button-last-hover-background-color);
 }
 
-/* hoover effect off for mobile */
-@media (hover: none) {
-    .readBox label:hover::after {
-        opacity: 0;
-    }
-}
 /* media queries */
 @media screen and (max-width: 1500px) {
     form > div:last-of-type {
@@ -273,5 +267,8 @@ form > div:last-of-type > button:last-child:hover {
     }
     .container > span {
         margin: 0;
+    }
+    .readBox label:hover::after {
+        opacity: 0;
     }
 }
