@@ -22,7 +22,7 @@
     --form-span-margin: 2rem;
     --input-height: 5vh;
     --input-width: 80%;
-    --input-margin: .8rem 0;
+    --input-margin: .8rem 0px;
     --input-padding: 0 1.5rem;
     --input-border-radius: 5px;
     /* tick box */
@@ -241,6 +241,9 @@ form > div:last-of-type > button:last-child:hover {
 @media screen and (max-width: 750px) {
     html {
         font-size: 75%;
+    }
+    #popup {
+        width: 90%;
     }
     .container {
         flex-direction: column;
