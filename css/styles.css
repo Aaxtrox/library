@@ -57,10 +57,10 @@ header > img:hover {
 
 @keyframes rotate {
     0% {
-        transform: rotate(0deg);
+        transform: scale(1) rotate(0deg);
     }
     100% {
-        transform: rotate(180deg);
+        transform: scale(1.2) rotate(180deg);
     }
 }
 
