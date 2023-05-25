@@ -127,5 +127,19 @@ function displayBooks() {
         newButton_2.classList.add('deleteButton');
         newButton_2.textContent = 'Delete';
         newDiv.appendChild(newButton_2);
+
+        // readButton event listeners to change read status
+        newButton.addEventListener('click', () => {
+            if (newButton.textContent === 'Read') {
+                newButton.textContent = 'Not Read';
+                // change read status in myLibrary array
+                myLibrary[i].read = 'Not Read';
+            } else {
+                newButton.textContent = 'Read';
+                // change read status in myLibrary array
+                myLibrary[i].read = 'Read';
+            }
+        });
     }
 }
+
