@@ -69,6 +69,14 @@ function addBookToLibrary() {
 
     // run displayBooks function
     displayBooks();
+
+    // clear input values
+    document.getElementById('title').value = '';
+    document.getElementById('author').value = '';
+    document.getElementById('pages').value = '';
+
+    // clear read checkbox
+    document.getElementById('read').checked = false;
 }
 
 // displayBooks function
