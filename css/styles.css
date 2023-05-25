@@ -11,7 +11,7 @@
     --margin-left: 0.5rem;
     /* popup */
     --popup-width: fit-content;
-    --popup-height: 65vh;
+    --popup-height: 60vh;
     --popup-top: 50%;
     --popup-left: 50%;
     --popup-border-radius: 20px;
@@ -21,8 +21,8 @@
     --scrollbar-thumb-color: #888;
     /* form */
     --form-font-family: 'Prompt', sans-serif;
-    --form-font-size: 1.8rem;
-    --form-span-margin: 2rem;
+    --form-font-size: 1.6rem;
+    --form-span-margin: 1rem;
     --input-height: 5vh;
     --input-width: 80%;
     --input-margin: .8rem 0px;
@@ -32,7 +32,7 @@
     --tickBox-margin: 20px auto;
     --tickBox-span-margin-right: 1.5rem;
     /* buttons */
-    --button-margin-div: 2rem;
+    --button-margin-div: 1rem;
     --button-height: 50px;
     --button-width: 8vw;
     --button-margin: 0 1rem;
@@ -119,9 +119,11 @@ header > img:hover {
 
 /*form*/
 form {
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
     font-family: var(--form-font-family);
     font-size: var(--form-font-size);
 }
@@ -244,7 +246,7 @@ form > div:last-of-type > button:last-child:hover {
         flex-direction: column;
     }
     form > div:last-of-type > button {
-        margin: .5rem 0;
+        margin: .4rem 0;
         width: 120px;
     }
 }
@@ -266,7 +268,7 @@ form > div:last-of-type > button:last-child:hover {
         flex-direction: column;
     }
     .container > span {
-        margin: 0;
+        margin: 0 0 1rem 0;
     }
     .readBox label:hover::after {
         opacity: 0;
