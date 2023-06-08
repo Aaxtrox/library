@@ -118,7 +118,7 @@ header > img:hover {
 }
 
 /*form*/
-form {
+.popupForm {
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -128,17 +128,17 @@ form {
     font-size: var(--form-font-size);
 }
 
-form > span {
+.popupForm > span {
     margin: var(--form-span-margin);
 }
 
-form > div:first-of-type {
+.popupForm > div:first-of-type {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-form > div:first-of-type > input {
+.popupForm > div:first-of-type > input {
     height: var(--input-height);
     width: var(--input-width);
     margin: var(--input-margin);
@@ -147,7 +147,7 @@ form > div:first-of-type > input {
     border-radius: var(--input-border-radius);
 }
 
-form > div:first-of-type > input:focus {
+.popupForm > div:first-of-type > input:focus {
     outline: none;
 }
 
@@ -210,13 +210,13 @@ form > div:first-of-type > input:focus {
 }
 
 /* buttons */
-form > div:last-of-type {
+.popupForm > div:last-of-type {
     display: flex;
     flex-direction: row;
     margin: var(--button-margin-div);
 }
 
-form > div:last-of-type > button {
+.popupForm > div:last-of-type > button {
     height: var(--button-height);
     width: var(--button-width);
     margin: var(--button-margin);
@@ -226,17 +226,17 @@ form > div:last-of-type > button {
     box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
-form > div:last-of-type > button:last-child {
+.popupForm > div:last-of-type > button:last-child {
     background-color: var(--button-last-background-color);
 }
 
-form > div:last-of-type > button:hover {
+.popupForm > div:last-of-type > button:hover {
     cursor: pointer;
     transition: .6s;
     background-color: var(--button-hover-background-color);
 }
 
-form > div:last-of-type > button:last-child:hover {
+.popupForm > div:last-of-type > button:last-child:hover {
     background-color: var(--button-last-hover-background-color);
 }
 
@@ -309,10 +309,10 @@ main > div > div > button:hover {
 
 /* media queries */
 @media screen and (max-width: 1500px) {
-    form > div:last-of-type {
+    .popupForm > div:last-of-type {
         flex-direction: column;
     }
-    form > div:last-of-type > button {
+    .popupForm > div:last-of-type > button {
         margin: .4rem 0;
         width: 120px;
     }
