@@ -262,25 +262,40 @@ main > div {
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-main > div > button {
-    height: var(--button-height);
-    width: var(--button-width);
+main > div > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+main > div > div > button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 50px;
     margin: .5rem;
     border: none;
     border-radius: var(--button-border-radius);
     box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
-main > div > button:hover {
+main > div > div > button > img {
+    height: 90%;
+    width: auto;
+}
+main > div > div > button:hover {
     cursor: pointer;
     transition: .6s;
 }
 
-.readButton {
+.cogs {
     background-color: var(--button-background-color);
 }
 
-.readButton:hover {
+.cogs:hover {
     background-color: var(--button-hover-background-color);
 }
 

@@ -145,34 +145,21 @@ function displayBooks() {
         newH3_2.textContent = myLibrary[i].pages;
         newDiv.appendChild(newH3_2);
 
-        //create new h3 element inside newDiv
-        let newH3_3 = document.createElement('h3');
-        newH3_3.classList.add('read');
+        //create new div element inside newDiv
+        let newDiv_2 = document.createElement('div');
+        newDiv.appendChild(newDiv_2);
 
-        // create new button element inside newDiv
+        // create new cogs button element inside newDiv > newDiv_2
         let newButton = document.createElement('button');
-        newButton.classList.add('readButton');
-        newButton.textContent = myLibrary[i].read;
-        newDiv.appendChild(newButton);
+        newButton.classList.add('cogs');
+        newButton.innerHTML = '<img src="./img/cogs.svg" alt="cogs">';
+        newDiv_2.appendChild(newButton);
 
         // create new button element inside newDiv
         let newButton_2 = document.createElement('button');
         newButton_2.classList.add('deleteButton');
-        newButton_2.textContent = 'Delete';
-        newDiv.appendChild(newButton_2);
-
-        // readButton event listeners to change read status
-        newButton.addEventListener('click', () => {
-            if (newButton.textContent === 'Read') {
-                newButton.textContent = 'Not Read';
-                // change read status in myLibrary array
-                myLibrary[i].read = 'Not Read';
-            } else {
-                newButton.textContent = 'Read';
-                // change read status in myLibrary array
-                myLibrary[i].read = 'Read';
-            }
-        });
+        newButton_2.innerHTML = '<img src="./img/delete-forever.svg" alt="delete">';
+        newDiv_2.appendChild(newButton_2);
 
         // deleteButton event listeners to delete book
         newButton_2.addEventListener('click', () => {
