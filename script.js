@@ -3,6 +3,9 @@ addButton = document.getElementById('addButton');
 discard = document.getElementById('discard');
 popup = document.getElementById('popup');
 submit = document.getElementById('submit');
+readButton = document.getElementsByClassName('readButton');
+deleteButton = document.getElementsByClassName('deleteButton');
+main = document.getElementsByTagName('main')[0];
 
 //array for books
 let myLibrary = [];
@@ -16,8 +19,18 @@ submit.addEventListener('click', (e) => {
 addButton.addEventListener('click', () => {
     // change pop up display to block
     document.getElementById('popup').style.display = 'block';
-    //disable hoover effect on addButton
+    // disable hoover effect on addButton
     addButton.style.pointerEvents = 'none';
+    // disable hoover effect on readButton
+    for (let i = 0; i < readButton.length; i++) {
+        readButton[i].style.pointerEvents = 'none';
+    }
+    // disable hoover effect on deleteButton
+    for (let i = 0; i < deleteButton.length; i++) {
+        deleteButton[i].style.pointerEvents = 'none';
+    }
+    // grascale main
+    main.style.filter = 'grayscale(100%)';
 });
 
 // discard event listeners to hide pop up
@@ -26,6 +39,16 @@ discard.addEventListener('click', () => {
     popup.style.display = 'none';
     //enable hoover effect on addButton
     addButton.style.pointerEvents = 'auto';
+    // enable hoover effect on readButton
+    for (let i = 0; i < readButton.length; i++) {
+        readButton[i].style.pointerEvents = 'auto';
+    }
+    // enable hoover effect on deleteButton
+    for (let i = 0; i < deleteButton.length; i++) {
+        deleteButton[i].style.pointerEvents = 'auto';
+    }
+    // grascale main
+    main.style.filter = 'grayscale(0%)';
 });
 
 // submit event listeners to add book to library
@@ -36,6 +59,16 @@ submit.addEventListener('click', () => {
     popup.style.display = 'none';
     //enable hoover effect on addButton
     addButton.style.pointerEvents = 'auto';
+    // enable hoover effect on readButton
+    for (let i = 0; i < readButton.length; i++) {
+        readButton[i].style.pointerEvents = 'auto';
+    }
+    // enable hoover effect on deleteButton
+    for (let i = 0; i < deleteButton.length; i++) {
+        deleteButton[i].style.pointerEvents = 'auto';
+    }
+    // grascale main
+    main.style.filter = 'grayscale(0%)';
 });
 
 // Book constructor
@@ -139,6 +172,14 @@ function displayBooks() {
                 // change read status in myLibrary array
                 myLibrary[i].read = 'Read';
             }
+        });
+
+        // deleteButton event listeners to delete book
+        newButton_2.addEventListener('click', () => {
+            // remove book from myLibrary array
+            myLibrary.splice(i, 1);
+            // run displayBooks function
+            displayBooks();
         });
     }
 }

@@ -241,6 +241,56 @@ form > div:last-of-type > button:last-child:hover {
 }
 
 /* main */
+/* display books in card using grid*/
+main {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 1.5rem;
+    padding: 1rem;
+    margin: 0 auto;
+    width: 90%;
+}
+
+main > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    border-radius: 5px;
+    background-color: #f5f5f4;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+main > div > button {
+    height: var(--button-height);
+    width: var(--button-width);
+    margin: .5rem;
+    border: none;
+    border-radius: var(--button-border-radius);
+    box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+main > div > button:hover {
+    cursor: pointer;
+    transition: .6s;
+}
+
+.readButton {
+    background-color: var(--button-background-color);
+}
+
+.readButton:hover {
+    background-color: var(--button-hover-background-color);
+}
+
+.deleteButton {
+    background-color: var(--button-last-background-color);
+}
+
+.deleteButton:hover {
+    background-color: var(--button-last-hover-background-color);
+}
 
 /* media queries */
 @media screen and (max-width: 1500px) {
