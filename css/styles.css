@@ -90,7 +90,8 @@ header > img:hover {
 }
 
 /* popup */
-#popup {
+#popup,
+#cogsPopup {
     display: none;
     position: fixed;
     top: var(--popup-top);
@@ -118,7 +119,8 @@ header > img:hover {
 }
 
 /*form*/
-.popupForm {
+.popupForm,
+.cogsForm {
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -138,7 +140,8 @@ header > img:hover {
     align-items: center;
 }
 
-.popupForm > div:first-of-type > input {
+.popupForm > div:first-of-type > input,
+.cogsForm > input {
     height: var(--input-height);
     width: var(--input-width);
     margin: var(--input-margin);
@@ -147,7 +150,8 @@ header > img:hover {
     border-radius: var(--input-border-radius);
 }
 
-.popupForm > div:first-of-type > input:focus {
+.popupForm > div:first-of-type > input:focus,
+.cogsForm > input:focus {
     outline: none;
 }
 
@@ -210,13 +214,15 @@ header > img:hover {
 }
 
 /* buttons */
-.popupForm > div:last-of-type {
+.popupForm > div:last-of-type,
+.cogsForm > div:last-of-type {
     display: flex;
     flex-direction: row;
     margin: var(--button-margin-div);
 }
 
-.popupForm > div:last-of-type > button {
+.popupForm > div:last-of-type > button,
+.cogsForm > div:last-of-type > button {
     height: var(--button-height);
     width: var(--button-width);
     margin: var(--button-margin);
@@ -226,22 +232,34 @@ header > img:hover {
     box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
-.popupForm > div:last-of-type > button:last-child {
+.popupForm > div:last-of-type > button:last-child,
+.cogsForm > div:last-of-type > button:last-child {
     background-color: var(--button-last-background-color);
 }
 
-.popupForm > div:last-of-type > button:hover {
+.popupForm > div:last-of-type > button:hover,
+.cogsForm > div:last-of-type > button:hover {
     cursor: pointer;
     transition: .6s;
     background-color: var(--button-hover-background-color);
 }
 
-.popupForm > div:last-of-type > button:last-child:hover {
+.popupForm > div:last-of-type > button:last-child:hover,
+.cogsForm > div:last-of-type > button:last-child:hover {
     background-color: var(--button-last-hover-background-color);
 }
 
+/* cogs popup */
+#cogsPopup {
+    width: 20rem;
+    height: 20rem;
+}
+
+.cogsForm > div:last-of-type > button {
+    width: 120px;
+}
+
 /* main */
-/* display books in card using grid*/
 main {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -309,10 +327,12 @@ main > div > div > button:hover {
 
 /* media queries */
 @media screen and (max-width: 1500px) {
-    .popupForm > div:last-of-type {
+    .popupForm > div:last-of-type,
+    .cogsForm > div:last-of-type {
         flex-direction: column;
     }
-    .popupForm > div:last-of-type > button {
+    .popupForm > div:last-of-type > button,
+    .cogsForm > div:last-of-type > button {
         margin: .4rem 0;
         width: 120px;
     }
@@ -328,7 +348,8 @@ main > div > div > button:hover {
     html {
         font-size: 75%;
     }
-    #popup {
+    #popup,
+    #cogsPopup {
         width: 90%;
     }
     .container {
