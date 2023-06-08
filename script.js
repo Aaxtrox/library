@@ -1,5 +1,7 @@
 // grab elements
 addButton = document.getElementById('addButton');
+save = document.getElementById('save');
+cogs = document.getElementsByClassName('cogs');
 discard = document.getElementById('discard');
 cogsDiscard = document.getElementById('cogsDiscard');
 popup = document.getElementById('popup');
@@ -9,11 +11,16 @@ readButton = document.getElementsByClassName('readButton');
 deleteButton = document.getElementsByClassName('deleteButton');
 main = document.getElementsByTagName('main')[0];
 
+//create global variables for cogsI
+let cogsI;
 //array for books
 let myLibrary = [];
 
 //submit prevent default
 submit.addEventListener('click', (e) => {
+    e.preventDefault();
+});
+save.addEventListener('click', (e) => {
     e.preventDefault();
 });
 
@@ -31,7 +38,7 @@ addButton.addEventListener('click', () => {
     for (let i = 0; i < deleteButton.length; i++) {
         deleteButton[i].style.pointerEvents = 'none';
     }
-    // grascale main
+    // gray scale main
     main.style.filter = 'grayscale(100%)';
 });
 
@@ -49,7 +56,7 @@ discard.addEventListener('click', () => {
     for (let i = 0; i < deleteButton.length; i++) {
         deleteButton[i].style.pointerEvents = 'auto';
     }
-    // grascale main
+    // gray scale main
     main.style.filter = 'grayscale(0%)';
 });
 
@@ -69,7 +76,7 @@ submit.addEventListener('click', () => {
     for (let i = 0; i < deleteButton.length; i++) {
         deleteButton[i].style.pointerEvents = 'auto';
     }
-    // grascale main
+    // gray scale main
     main.style.filter = 'grayscale(0%)';
 });
 
@@ -121,7 +128,6 @@ function displayBooks() {
 
     // loop through myLibrary array
     for (let i = 0; i < myLibrary.length; i++) {
-        console.log(myLibrary[i]);
 
         // create new div element inside main
         let newDiv = document.createElement('div');
@@ -164,9 +170,11 @@ function displayBooks() {
         newDiv_2.appendChild(newButton_2);
 
         // newButton event listeners to display pop up
-        newButton.addEventListener('click', () => {
+        cogs[i].addEventListener('click', () => {
             // change cogsForm display to block
             cogsPopup.style.display = 'block';
+            // assign i to cogsI
+            cogsI = i;
         });
 
         // deleteButton event listeners to delete book
@@ -175,6 +183,22 @@ function displayBooks() {
             myLibrary.splice(i, 1);
             // run displayBooks function
             displayBooks();
+        });
+
+        // save event listeners to save changes
+        save.addEventListener('click', () => {
+            // grab input values from updatePages
+            let updatePages = document.getElementById('updatePages').value;
+            // update pages to myLibrary array
+            myLibrary[cogsI].pages = updatePages + ' pages';
+            // run displayBooks function
+            displayBooks();
+
+            console.log('save');
+            console.log(cogsI);
+            console.log(updatePages);
+            // change cogsForm display to none
+            cogsPopup.style.display = 'none';
         });
 
         // cogsDiscard event listeners to hide pop up
