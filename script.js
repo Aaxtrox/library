@@ -1,7 +1,9 @@
 // grab elements
 addButton = document.getElementById('addButton');
 discard = document.getElementById('discard');
+cogsDiscard = document.getElementById('cogsDiscard');
 popup = document.getElementById('popup');
+cogsPopup = document.getElementById('cogsPopup');
 submit = document.getElementById('submit');
 readButton = document.getElementsByClassName('readButton');
 deleteButton = document.getElementsByClassName('deleteButton');
@@ -161,12 +163,24 @@ function displayBooks() {
         newButton_2.innerHTML = '<img src="./img/delete-forever.svg" alt="delete">';
         newDiv_2.appendChild(newButton_2);
 
+        // newButton event listeners to display pop up
+        newButton.addEventListener('click', () => {
+            // change cogsForm display to block
+            cogsPopup.style.display = 'block';
+        });
+
         // deleteButton event listeners to delete book
         newButton_2.addEventListener('click', () => {
             // remove book from myLibrary array
             myLibrary.splice(i, 1);
             // run displayBooks function
             displayBooks();
+        });
+
+        // cogsDiscard event listeners to hide pop up
+        cogsDiscard.addEventListener('click', () => {
+            // change cogsForm display to none
+            cogsPopup.style.display = 'none';
         });
     }
 }
