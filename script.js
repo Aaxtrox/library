@@ -16,12 +16,11 @@ let cogsI;
 //array for books
 let myLibrary = [];
 
-//submit prevent default
-submit.addEventListener('click', (e) => {
-    e.preventDefault();
-});
-save.addEventListener('click', (e) => {
-    e.preventDefault();
+// prevent default for all buttons
+document.querySelectorAll('button').forEach(button => {
+    button.addEventListener('click', event => {
+        event.preventDefault();
+    });
 });
 
 // addButton event listeners to display pop up
@@ -208,4 +207,3 @@ function displayBooks() {
         });
     }
 }
-
