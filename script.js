@@ -1,18 +1,21 @@
 // grab elements
+//buttons
 addButton = document.getElementById('addButton');
-save = document.getElementById('save');
-cogs = document.getElementsByClassName('cogs');
+submit = document.getElementById('submit');
 discard = document.getElementById('discard');
+cogs = document.getElementsByClassName('cogs');
+deleteButton = document.getElementsByClassName('deleteButton');
+save = document.getElementById('save');
 cogsDiscard = document.getElementById('cogsDiscard');
+//main
+main = document.getElementsByTagName('main')[0];
+//pop up
 popup = document.getElementById('popup');
 cogsPopup = document.getElementById('cogsPopup');
-submit = document.getElementById('submit');
-readButton = document.getElementsByClassName('readButton');
-deleteButton = document.getElementsByClassName('deleteButton');
-main = document.getElementsByTagName('main')[0];
 
-//create global variables for cogsI
+// create global variables for cogsI
 let cogsI;
+
 //array for books
 let myLibrary = [];
 
@@ -27,64 +30,66 @@ document.querySelectorAll('button').forEach(button => {
 addButton.addEventListener('click', () => {
     // change pop up display to block
     document.getElementById('popup').style.display = 'block';
-    // disable hoover effect on addButton
-    addButton.style.pointerEvents = 'none';
-    // disable hoover effect on readButton
-    for (let i = 0; i < readButton.length; i++) {
-        readButton[i].style.pointerEvents = 'none';
-    }
-    // disable hoover effect on deleteButton
-    for (let i = 0; i < deleteButton.length; i++) {
-        deleteButton[i].style.pointerEvents = 'none';
-    }
-    // gray scale main
-    main.style.filter = 'grayscale(100%)';
+
+    // run disableHoover function
+    disableHoover();
+});
+
+// submit event listeners to add book to library
+submit.addEventListener('click', () => {
+    // change pop up display to none
+    popup.style.display = 'none';
+
+    // run enableHoover function
+    enableHoover();
+
+    // run addBookToLibrary function
+    addBookToLibrary();
 });
 
 // discard event listeners to hide pop up
 discard.addEventListener('click', () => {
     // change pop up display to none
     popup.style.display = 'none';
-    //enable hoover effect on addButton
-    addButton.style.pointerEvents = 'auto';
-    // enable hoover effect on readButton
-    for (let i = 0; i < readButton.length; i++) {
-        readButton[i].style.pointerEvents = 'auto';
-    }
-    // enable hoover effect on deleteButton
-    for (let i = 0; i < deleteButton.length; i++) {
-        deleteButton[i].style.pointerEvents = 'auto';
-    }
-    // gray scale main
-    main.style.filter = 'grayscale(0%)';
+
+    // run enableHoover function
+    enableHoover();
 });
 
-// submit event listeners to add book to library
-submit.addEventListener('click', () => {
-    // run addBookToLibrary function
-    addBookToLibrary();
-    // change pop up display to none
-    popup.style.display = 'none';
-    //enable hoover effect on addButton
-    addButton.style.pointerEvents = 'auto';
-    // enable hoover effect on readButton
-    for (let i = 0; i < readButton.length; i++) {
-        readButton[i].style.pointerEvents = 'auto';
-    }
-    // enable hoover effect on deleteButton
-    for (let i = 0; i < deleteButton.length; i++) {
-        deleteButton[i].style.pointerEvents = 'auto';
-    }
-    // gray scale main
-    main.style.filter = 'grayscale(0%)';
+// save event listeners to save changes
+save.addEventListener('click', () => {
+    // grab input values from updatePages
+    let updatePages = document.getElementById('updatePages').value;
+
+    // update pages to myLibrary array
+    myLibrary[cogsI].pages = updatePages + ' pages';
+
+    // run enableHoover function
+    enableHoover();
+
+    // run displayBooks function
+    displayBooks();
+    
+    // change cogsForm display to none
+    cogsPopup.style.display = 'none';
 });
+
+// cogsDiscard event listeners to hide pop up
+cogsDiscard.addEventListener('click', () => {
+    // change cogsForm display to none
+    cogsPopup.style.display = 'none';
+
+    // run enableHoover function
+    enableHoover();
+});
+
+
 
 // Book constructor
-function Book(title, author, pages, read) {
+function Book(title, author, pages) {
     this.title = title;
     this.author = author;
     this.pages = pages + ' pages';
-    this.read = read;
 }
 
 // addBookToLibrary function
@@ -93,17 +98,9 @@ function addBookToLibrary() {
     let title = document.getElementById('title').value;
     let author = document.getElementById('author').value;
     let pages = document.getElementById('pages').value;
-    let read = document.getElementById('read').checked;
-
-    // check if read is true or false
-    if (read === true) {
-        read = 'Read';
-    } else {
-        read = 'Not Read';
-    }
 
     // create new book object
-    let newBook = new Book(title, author, pages, read);
+    let newBook = new Book(title, author, pages);
 
     // push new book object to myLibrary array
     myLibrary.push(newBook);
@@ -115,9 +112,6 @@ function addBookToLibrary() {
     document.getElementById('title').value = '';
     document.getElementById('author').value = '';
     document.getElementById('pages').value = '';
-
-    // clear read checkbox
-    document.getElementById('read').checked = false;
 }
 
 // displayBooks function
@@ -174,6 +168,8 @@ function displayBooks() {
             cogsPopup.style.display = 'block';
             // assign i to cogsI
             cogsI = i;
+            // run disableHoover function
+            disableHoover();
         });
 
         // deleteButton event listeners to delete book
@@ -183,27 +179,49 @@ function displayBooks() {
             // run displayBooks function
             displayBooks();
         });
-
-        // save event listeners to save changes
-        save.addEventListener('click', () => {
-            // grab input values from updatePages
-            let updatePages = document.getElementById('updatePages').value;
-            // update pages to myLibrary array
-            myLibrary[cogsI].pages = updatePages + ' pages';
-            // run displayBooks function
-            displayBooks();
-
-            console.log('save');
-            console.log(cogsI);
-            console.log(updatePages);
-            // change cogsForm display to none
-            cogsPopup.style.display = 'none';
-        });
-
-        // cogsDiscard event listeners to hide pop up
-        cogsDiscard.addEventListener('click', () => {
-            // change cogsForm display to none
-            cogsPopup.style.display = 'none';
-        });
     }
+}
+
+// function t disable hoover effect on buttons
+function disableHoover() {
+    // disable hoover effect on addButton
+    addButton.style.pointerEvents = 'none';
+
+    // disable hoover effect on deleteButton
+    for (let i = 0; i < deleteButton.length; i++) {
+        deleteButton[i].style.pointerEvents = 'none';
+    }
+
+    // disable click event on cogs
+    for (let i = 0; i < cogs.length; i++) {
+        cogs[i].style.pointerEvents = 'none';
+    }
+
+    //transition main 1s
+    main.style.transition = '1s';
+
+    // gray scale main
+    main.style.filter = 'grayscale(100%)';
+}
+
+// function to enable hoover effect on buttons
+function enableHoover() {
+    // enable hoover effect on addButton
+    addButton.style.pointerEvents = 'auto';
+
+    // enable hoover effect on deleteButton
+    for (let i = 0; i < deleteButton.length; i++) {
+        deleteButton[i].style.pointerEvents = 'auto';
+    }
+
+    // enable click event on cogs
+    for (let i = 0; i < cogs.length; i++) {
+        cogs[i].style.pointerEvents = 'auto';
+    }
+
+    //transition main 1s
+    main.style.transition = '1s';
+
+    // gray scale main
+    main.style.filter = 'grayscale(0%)';
 }
