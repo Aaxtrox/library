@@ -15,6 +15,7 @@
             <img src="./img/bookshelf.svg" alt="logo">
             <span>Library</span>
         </div>
+        <!-- addButton -->
         <img src="./img/plus-circle-outline.svg" alt="add icon" id="addButton">
     </header>
     <!-- popup menu -->
@@ -23,22 +24,15 @@
         <form action="#" class="popupForm">
             <span>Add new book</span>
             <div>
+                <!-- input fields -->
                 <input type="text" name="title" id="title" placeholder="Title">
                 <input type="text" name="author" id="author" placeholder="Author">
                 <input type="number" name="pages" id="pages" placeholder="Pages">
             </div>
-            <!-- read checkbox -->
-            <div class="container">
-                <span>Have you read it?</span>
-                <div class="readBox">
-                    <input type="checkbox" name="read" id="read">
-                    <label for="read"></label>
-                </div>
-            </div>
-            <!-- submit button -->
             <div>
                 <!-- submit button -->
                 <button id="submit" type="submit">Add</button>
+                <!-- discard button -->
                 <button id="discard">Discard</button>
             </div>
         </form>
@@ -47,12 +41,15 @@
     <div id="cogsPopup">
         <!-- form -->
         <form action="#" class="cogsForm">
+            <!-- empty div -->
             <div></div>
+            <!-- input fields -->
             <input type="number" name="updatePages" id="updatePages" placeholder="Update pages">
             <!-- submit button -->
             <div>
-                <!-- submit button -->
+                <!-- save button -->
                 <button id="save" type="submit">Save</button>
+                <!-- cogsDiscard button-->
                 <button id="cogsDiscard">Discard</button>
             </div>
         </form>
