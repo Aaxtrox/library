@@ -159,7 +159,8 @@ header > img:hover {
     font-size: var(--form-font-size);
 }
 
-.popupForm > span {
+.popupForm > span,
+.cogsForm > span {
     margin: var(--form-span-margin);
 }
 

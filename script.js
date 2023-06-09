@@ -73,13 +73,6 @@ discard.addEventListener('click', () => {
     clearInput();
 });
 
-// // not allowed updatePages.value to be less than parseInt(myLibrary[cogsI].pages)
-// document.getElementById('updatePages').addEventListener('input', () => {
-//     if (document.getElementById('updatePages').value < parseInt(myLibrary[cogsI].pages)) {
-//         document.getElementById('updatePages').value = parseInt(myLibrary[cogsI].pages);
-//     }
-// });
-
 // save event listeners to save changes
 save.addEventListener('click', () => {
     // grab input values from updatePages
