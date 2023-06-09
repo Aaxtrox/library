@@ -73,12 +73,12 @@ discard.addEventListener('click', () => {
     clearInput();
 });
 
-// not allowed updatePages.value to be less than parseInt(myLibrary[cogsI].pages)
-document.getElementById('updatePages').addEventListener('input', () => {
-    if (document.getElementById('updatePages').value < parseInt(myLibrary[cogsI].pages)) {
-        document.getElementById('updatePages').value = parseInt(myLibrary[cogsI].pages);
-    }
-});
+// // not allowed updatePages.value to be less than parseInt(myLibrary[cogsI].pages)
+// document.getElementById('updatePages').addEventListener('input', () => {
+//     if (document.getElementById('updatePages').value < parseInt(myLibrary[cogsI].pages)) {
+//         document.getElementById('updatePages').value = parseInt(myLibrary[cogsI].pages);
+//     }
+// });
 
 // save event listeners to save changes
 save.addEventListener('click', () => {
@@ -183,6 +183,16 @@ function displayBooks() {
 
         // newButton event listeners to display pop up
         cogs[i].addEventListener('click', () => {
+            // set text content of updatePages to myLibrary[i].pages
+            document.getElementById('updatePages').value = parseInt(myLibrary[i].pages);
+
+            // don't allow updatePages to be less than parseInt(myLibrary[cogsI].pages)
+            document.getElementById('updatePages').addEventListener('input', () => {
+                if (document.getElementById('updatePages').value < parseInt(myLibrary[cogsI].pages)) {
+                    document.getElementById('updatePages').value = parseInt(myLibrary[cogsI].pages);
+                }
+            });
+
             // change cogsForm display to block
             cogsPopup.style.display = 'block';
             // assign i to cogsI
