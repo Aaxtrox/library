@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Preahvihear&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gidugu&family=Josefin+Sans:wght@700&display=swap');
 
 :root {
     /* header */
@@ -53,6 +54,7 @@
     --main-div-border-radius: 5px;
     --main-div-background-color: #d6d3d1;
     --main-div-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    --main-div-height: min-content;
     /* main > button */
     --main-button-height: 50px;
     --main-button-width: 50px;
@@ -70,6 +72,14 @@
     --popups-width: 90%;
     --container-direction: row;
     --container-span-margin: 0 0 1rem 0;
+}
+
+/* body */
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 /* header */
@@ -250,6 +260,7 @@ main > div {
     border-radius: var(--main-div-border-radius);
     background-color: var(--main-div-background-color);
     box-shadow: var(--main-div-box-shadow);
+    height: var(--main-div-height);
 }
 
 main > div > div {
@@ -297,6 +308,71 @@ main > div > div > button:hover {
     background-color: var(--button-last-hover-background-color);
 }
 
+/* footer */
+footer > div:first-of-type {
+    font-size: 1.2rem;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+
+footer > div:nth-child(2) {
+    display: flex;
+}
+
+
+footer > div {
+    font-size: 0.9rem;
+    margin: 1.6rem;
+}
+footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    height: 10vh;
+}
+.icon{
+    width: 35px;
+    height: 35px;
+    border-radius: 50px;
+    background: #fff;
+    margin: 0 20px 20px 20px;
+    text-align: center;
+    font-size: 25px;
+    line-height: 37px;
+    font-family: sans-serif;
+    overflow: hidden;
+    box-shadow: 2px 5px 10px rgba(150, 150, 150, .3);
+    transition: all .1s ease-out;
+}
+.icon:hover{
+    width: 200px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    color: #fff;
+}
+.icon:hover i{
+    color: #fff;
+}
+.icon .fa-linkedin-in{
+    color: #0077B5;
+}
+.lnk:hover{
+    background: #0077B5;
+}
+.icon .fa-github{
+    color: #000;
+}
+.git:hover{
+    background: #000;
+}
+a{
+    text-decoration: none;
+    color: #fff;
+}
+
 /* media queries */
 @media screen and (max-width: 1500px) {
     .popupForm > div:last-of-type,
@@ -329,5 +405,11 @@ main > div > div > button:hover {
     }
     .container > span {
         margin: var(--container-span-margin);
+    }
+    footer {
+        flex-direction: column;
+    }
+    footer > div {
+        margin: .5rem;
     }
 }

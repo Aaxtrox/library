@@ -284,3 +284,6 @@ function clearInput() {
     document.getElementById('author').value = '';
     document.getElementById('pages').value = '';
 }
+
+//current year for links section
+document.getElementById("year").innerHTML = new Date().getFullYear();
