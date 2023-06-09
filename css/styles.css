@@ -16,6 +16,10 @@
     --popup-left: 50%;
     --popup-border-radius: 20px;
     --popup-background-color: #f5f5f4;
+    /* cogs popup */
+    --cogs-popup-width: 20rem;
+    --cogs-popup-height: 20rem;
+    --cogs-form-button-width: 120px;
     /* scroll bar */
     --scrollbar-width: 15px;
     --scrollbar-thumb-color: #888;
@@ -28,9 +32,6 @@
     --input-margin: .8rem 0px;
     --input-padding: 0 1.5rem;
     --input-border-radius: 5px;
-    /* tick box */
-    --tickBox-margin: 20px auto;
-    --tickBox-span-margin-right: 1.5rem;
     /* buttons */
     --button-margin-div: 1rem;
     --button-height: 50px;
@@ -41,6 +42,34 @@
     --button-last-background-color: #dc2626;
     --button-hover-background-color: #fbbf24;
     --button-last-hover-background-color: #991b1b;
+    /* main */
+    --main-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    --main-grid-gap: 1.5rem;
+    --main-padding: 1rem;
+    --main-margin: 0 auto;
+    --main-width: 90%;
+    /* main > div */
+    --main-div-padding: 1rem;
+    --main-div-border-radius: 5px;
+    --main-div-background-color: #d6d3d1;
+    --main-div-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    /* main > button */
+    --main-button-height: 50px;
+    --main-button-width: 50px;
+    --main-button-margin: .5rem;
+    --main-button-border-radius: 5px;
+    --main-button-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0, 0, 0, 0.5);
+    /* media queries */
+    /* media-query-1: 1500px; */
+    --forms-buttons-margin: .4rem 0;
+    --forms-buttons-width: 120px;
+    /* media-query-2: 1000px; */
+    --html-font-size: 80%;
+    /* media-query-3: 750px; */
+    --html-font-size: 75%;
+    --popups-width: 90%;
+    --container-direction: row;
+    --container-span-margin: 0 0 1rem 0;
 }
 
 /* header */
@@ -118,7 +147,7 @@ header > img:hover {
     background: var(--scrollbar-thumb-color);
 }
 
-/*form*/
+/* form */
 .popupForm,
 .cogsForm {
     height: 100%;
@@ -153,64 +182,6 @@ header > img:hover {
 .popupForm > div:first-of-type > input:focus,
 .cogsForm > input:focus {
     outline: none;
-}
-
-/* tick box */
-.container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin: var(--tickBox-margin);
-}
-
-.container > span {
-    margin-right: var(--tickBox-span-margin-right);
-}
-
-.readBox {
-    width: 20px;
-    position: relative;
-}
-
-.readBox label {
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #fcfff4;
-    background: linear-gradient(to bottom, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
-    border-radius: 4px;
-    box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0, 0, 0, 0.5);
-}
-
-.readBox label:after {
-    content: '';
-    width: 9px;
-    height: 5px;
-    position: absolute;
-    top: 4px;
-    left: 4px;
-    border: 3px solid #333;
-    border-top: none;
-    border-right: none;
-    background: transparent;
-    opacity: 0;
-    transform: rotate(-45deg);
-}
-
-.readBox label:hover::after {
-    opacity: 0.5;
-}
-
-.readBox input[type=checkbox] {
-    visibility: hidden;
-}
-
-.readBox input[type=checkbox]:checked + label:after {
-    opacity: 1;
 }
 
 /* buttons */
@@ -251,22 +222,22 @@ header > img:hover {
 
 /* cogs popup */
 #cogsPopup {
-    width: 20rem;
-    height: 20rem;
+    width: var(--cogs-popup-width);
+    height: var(--cogs-popup-height);
 }
 
 .cogsForm > div:last-of-type > button {
-    width: 120px;
+    width: var(--cogs-form-button-width);
 }
 
 /* main */
 main {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-gap: 1.5rem;
-    padding: 1rem;
-    margin: 0 auto;
-    width: 90%;
+    grid-template-columns: var(--main-template-columns);
+    grid-gap: var(--main-grid-gap);
+    padding: var(--main-padding);
+    margin: var(--main-margin);
+    width: var(--main-width);
 }
 
 main > div {
@@ -274,10 +245,10 @@ main > div {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem;
-    border-radius: 5px;
-    background-color: #d6d3d1;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    padding: var(--main-div-padding);
+    border-radius: var(--main-div-border-radius);
+    background-color: var(--main-div-background-color);
+    box-shadow: var(--main-div-box-shadow);
 }
 
 main > div > div {
@@ -292,12 +263,12 @@ main > div > div > button {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 50px;
-    width: 50px;
-    margin: .5rem;
+    height: var(--main-button-height);
+    width: var(--main-button-width);
+    margin: var(--main-button-margin);
     border: none;
-    border-radius: var(--button-border-radius);
-    box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0, 0, 0, 0.5);
+    border-radius: var(--main-button-border-radius);
+    box-shadow: var(--main-button-box-shadow);
 }
 
 main > div > div > button > img {
@@ -333,32 +304,29 @@ main > div > div > button:hover {
     }
     .popupForm > div:last-of-type > button,
     .cogsForm > div:last-of-type > button {
-        margin: .4rem 0;
-        width: 120px;
+        margin: var(--forms-buttons-margin);
+        width: var(--forms-buttons-width);
     }
 }
 
 @media screen and (max-width: 1000px) {
     html {
-        font-size: 80%;
+        font-size: var(--html-font-size);
     }
 }
 
 @media screen and (max-width: 750px) {
     html {
-        font-size: 75%;
+        font-size: var(--html-font-size);
     }
     #popup,
     #cogsPopup {
-        width: 90%;
+        width: var(--popups-width);
     }
     .container {
-        flex-direction: column;
+        flex-direction: var(--container-direction);
     }
     .container > span {
-        margin: 0 0 1rem 0;
-    }
-    .readBox label:hover::after {
-        opacity: 0;
+        margin: var(--container-span-margin);
     }
 }
