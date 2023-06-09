@@ -44,7 +44,7 @@
     --button-hover-background-color: #fbbf24;
     --button-last-hover-background-color: #991b1b;
     /* main */
-    --main-template-columns: repeat(auto-fit, 250px);
+    --main-template-columns: repeat(auto-fit, minmax(300px, min-content));
     --main-grid-gap: 1.5rem;
     --main-padding: 1rem;
     --main-margin: 0 auto;
