@@ -35,8 +35,20 @@ addButton.addEventListener('click', () => {
     disableHoover();
 });
 
-// not allowed pages.value to be less than 0
+// don't allow user to type anything other than numbers
 document.getElementById('pages').addEventListener('input', () => {
+    let pages = document.getElementById('pages').value;
+    let regex = /[^0-9]/g;
+    document.getElementById('pages').value = pages.replace(regex, '');
+    // don't allow user to start with 0
+    if (document.getElementById('pages').value == 0) {
+        document.getElementById('pages').value = '';
+    }
+    // limit input to 15 numbers
+    if (document.getElementById('pages').value.length > 15) {
+        document.getElementById('pages').value = document.getElementById('pages').value.slice(0, 15);
+    }
+    // not allowed pages.value to be less than 0
     if (document.getElementById('pages').value < 0) {
         document.getElementById('pages').value = 0;
     }
@@ -71,6 +83,21 @@ discard.addEventListener('click', () => {
 
     // run clearInput function
     clearInput();
+});
+
+// don't allow user to type anything other than numbers
+document.getElementById('updatePages').addEventListener('input', () => {
+    let updatePages = document.getElementById('updatePages').value;
+    let regex = /[^0-9]/g;
+    document.getElementById('updatePages').value = updatePages.replace(regex, '');
+    // don't allow user to start with 0
+    if (document.getElementById('updatePages').value == 0) {
+        document.getElementById('updatePages').value = '';
+    }
+    // limit input to 15 numbers
+    if (document.getElementById('updatePages').value.length > 15) {
+        document.getElementById('updatePages').value = document.getElementById('updatePages').value.slice(0, 15);
+    }
 });
 
 // save event listeners to save changes
@@ -120,10 +147,8 @@ function addBookToLibrary() {
     // run displayBooks function
     displayBooks();
 
-    // clear input values
-    document.getElementById('title').value = '';
-    document.getElementById('author').value = '';
-    document.getElementById('pages').value = '';
+    // run clearInput function
+    clearInput();
 }
 
 // displayBooks function
