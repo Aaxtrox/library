@@ -7,9 +7,6 @@ cogs = document.getElementsByClassName('cogs');
 deleteButton = document.getElementsByClassName('deleteButton');
 save = document.getElementById('save');
 cogsDiscard = document.getElementById('cogsDiscard');
-// inputs
-pages = document.getElementById('pages');
-updatePages = document.getElementById('updatePages');
 // main
 main = document.getElementsByTagName('main')[0];
 // pop up
@@ -38,24 +35,30 @@ addButton.addEventListener('click', () => {
     disableHoover();
 });
 
+// not allowed pages.value to be less than 0
+document.getElementById('pages').addEventListener('input', () => {
+    if (document.getElementById('pages').value < 0) {
+        document.getElementById('pages').value = 0;
+    }
+});
+
 // submit event listeners to add book to library
 submit.addEventListener('click', () => {
-    // change pop up display to none
-    popup.style.display = 'none';
-
-    // if pages is empty set it to 0
-    if (pages.value == '') {
+    if (title.value == '' || author.value == '') {
+        alert('Please fill out all fields');
+        return false;  
+    // else if pages is empty or less than 0
+    } else if (title.value != '' && author.value != '' && pages.value == '' ||
+    title.value != '' && author.value != '' && pages.value < 0) {
+        // assign pages to 0
         pages.value = 0;
+
+        // function run
+        run();
+    } else {
+        // function run
+        run();
     }
-
-    // run enableHoover function
-    enableHoover();
-
-    // run addBookToLibrary function
-    addBookToLibrary();
-
-    // run clearInput function
-    clearInput();
 });
 
 // discard event listeners to hide pop up
@@ -70,6 +73,13 @@ discard.addEventListener('click', () => {
     clearInput();
 });
 
+// not allowed updatePages.value to be less than parseInt(myLibrary[cogsI].pages)
+document.getElementById('updatePages').addEventListener('input', () => {
+    if (document.getElementById('updatePages').value < parseInt(myLibrary[cogsI].pages)) {
+        document.getElementById('updatePages').value = parseInt(myLibrary[cogsI].pages);
+    }
+});
+
 // save event listeners to save changes
 save.addEventListener('click', () => {
     // grab input values from updatePages
@@ -78,14 +88,8 @@ save.addEventListener('click', () => {
     // update pages to myLibrary array
     myLibrary[cogsI].pages = updatePages + ' pages';
 
-    // run enableHoover function
-    enableHoover();
-
-    // run displayBooks function
-    displayBooks();
-    
-    // change cogsForm display to none
-    cogsPopup.style.display = 'none';
+    // run runUpdate function
+    runUpdate();
 });
 
 // cogsDiscard event listeners to hide pop up
@@ -93,20 +97,11 @@ cogsDiscard.addEventListener('click', () => {
     // change cogsForm display to none
     cogsPopup.style.display = 'none';
 
+    // clear input values
+    document.getElementById('updatePages').value = '';
+
     // run enableHoover function
     enableHoover();
-});
-
-// pages prevent to be empty or negative
-pages.addEventListener('input', () => {
-    if (pages.value <= 0) {
-        pages.value = 0;
-    }
-});
-
-// updatePages set initial value to be equal to pages
-updatePages.addEventListener('click', () => {
-    updatePages.value = pages.value;
 });
 
 // Book constructor
@@ -206,7 +201,7 @@ function displayBooks() {
     }
 }
 
-// function t disable hoover effect on buttons
+// function to disable hoover effect on buttons
 function disableHoover() {
     // disable hoover effect on addButton
     addButton.style.pointerEvents = 'none';
@@ -248,6 +243,36 @@ function enableHoover() {
 
     // gray scale main
     main.style.filter = 'grayscale(0%)';
+}
+
+//function run
+function run() {
+    // change pop up display to none
+    popup.style.display = 'none';
+
+    // run enableHoover function
+    enableHoover();
+
+    // run addBookToLibrary function
+    addBookToLibrary();
+
+    // run clearInput function
+    clearInput();
+}
+
+//function runUpdate
+function runUpdate() {
+    // run enableHoover function
+    enableHoover();
+
+    // run displayBooks function
+    displayBooks();
+
+    // clear input values
+    document.getElementById('updatePages').value = '';
+    
+    // change cogsForm display to none
+    cogsPopup.style.display = 'none';
 }
 
 // function clear input values
