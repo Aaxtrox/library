@@ -1,5 +1,5 @@
 # library
-
+Simple library/online bookmark project where you can add your book into array and display them in the form of cards where you are able to change page count or delete the book completely. Later on, I am going to add the ability to save books in google drive.
 ## Demo
 
 <a href="https://aaxtrox.github.io/library/">Live Demo</a>
