@@ -1,5 +1,5 @@
 // grab elements
-//buttons
+// buttons
 addButton = document.getElementById('addButton');
 submit = document.getElementById('submit');
 discard = document.getElementById('discard');
@@ -7,16 +7,19 @@ cogs = document.getElementsByClassName('cogs');
 deleteButton = document.getElementsByClassName('deleteButton');
 save = document.getElementById('save');
 cogsDiscard = document.getElementById('cogsDiscard');
-//main
+// inputs
+pages = document.getElementById('pages');
+updatePages = document.getElementById('updatePages');
+// main
 main = document.getElementsByTagName('main')[0];
-//pop up
+// pop up
 popup = document.getElementById('popup');
 cogsPopup = document.getElementById('cogsPopup');
 
 // create global variables for cogsI
 let cogsI;
 
-//array for books
+// array for books
 let myLibrary = [];
 
 // prevent default for all buttons
@@ -40,11 +43,19 @@ submit.addEventListener('click', () => {
     // change pop up display to none
     popup.style.display = 'none';
 
+    // if pages is empty set it to 0
+    if (pages.value == '') {
+        pages.value = 0;
+    }
+
     // run enableHoover function
     enableHoover();
 
     // run addBookToLibrary function
     addBookToLibrary();
+
+    // run clearInput function
+    clearInput();
 });
 
 // discard event listeners to hide pop up
@@ -54,6 +65,9 @@ discard.addEventListener('click', () => {
 
     // run enableHoover function
     enableHoover();
+
+    // run clearInput function
+    clearInput();
 });
 
 // save event listeners to save changes
@@ -83,7 +97,17 @@ cogsDiscard.addEventListener('click', () => {
     enableHoover();
 });
 
+// pages prevent to be empty or negative
+pages.addEventListener('input', () => {
+    if (pages.value <= 0) {
+        pages.value = 0;
+    }
+});
 
+// updatePages set initial value to be equal to pages
+updatePages.addEventListener('click', () => {
+    updatePages.value = pages.value;
+});
 
 // Book constructor
 function Book(title, author, pages) {
@@ -224,4 +248,11 @@ function enableHoover() {
 
     // gray scale main
     main.style.filter = 'grayscale(0%)';
+}
+
+// function clear input values
+function clearInput() {
+    document.getElementById('title').value = '';
+    document.getElementById('author').value = '';
+    document.getElementById('pages').value = '';
 }
