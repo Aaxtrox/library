@@ -40,9 +40,9 @@ document.getElementById('pages').addEventListener('input', () => {
     let pages = document.getElementById('pages').value;
     let regex = /[^0-9]/g;
     document.getElementById('pages').value = pages.replace(regex, '');
-    // don't allow user to start with 0
-    if (document.getElementById('pages').value == 0) {
-        document.getElementById('pages').value = '';
+    // if pages.value starts with 0 don't accept other numbers after
+    if (document.getElementById('pages').value.startsWith(0)) {
+        document.getElementById('pages').value = 0;
     }
     // limit input to 15 numbers
     if (document.getElementById('pages').value.length > 15) {
@@ -90,13 +90,19 @@ document.getElementById('updatePages').addEventListener('input', () => {
     let updatePages = document.getElementById('updatePages').value;
     let regex = /[^0-9]/g;
     document.getElementById('updatePages').value = updatePages.replace(regex, '');
-    // don't allow user to start with 0
-    if (document.getElementById('updatePages').value == 0) {
-        document.getElementById('updatePages').value = '';
+    // if updatePages.value starts with 0 don't accept other numbers after
+    if (document.getElementById('updatePages').value.startsWith(0)) {
+        document.getElementById('updatePages').value = 0;
     }
     // limit input to 15 numbers
     if (document.getElementById('updatePages').value.length > 15) {
         document.getElementById('updatePages').value = document.getElementById('updatePages').value.slice(0, 15);
+    }
+    //if updatePages.value is less than 0 or empty
+    if (document.getElementById('updatePages').value < 0 ||
+    document.getElementById('updatePages').value == '') {
+        // assign updatePages to 0
+        document.getElementById('updatePages').value = 0;
     }
 });
 
@@ -203,13 +209,6 @@ function displayBooks() {
         cogs[i].addEventListener('click', () => {
             // set text content of updatePages to myLibrary[i].pages
             document.getElementById('updatePages').value = parseInt(myLibrary[i].pages);
-
-            // don't allow updatePages to be less than parseInt(myLibrary[cogsI].pages)
-            document.getElementById('updatePages').addEventListener('input', () => {
-                if (document.getElementById('updatePages').value < parseInt(myLibrary[cogsI].pages)) {
-                    document.getElementById('updatePages').value = parseInt(myLibrary[cogsI].pages);
-                }
-            });
 
             // change cogsForm display to block
             cogsPopup.style.display = 'block';

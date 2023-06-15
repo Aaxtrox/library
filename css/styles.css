@@ -263,6 +263,22 @@ main > div {
     height: var(--main-div-height);
 }
 
+main > div > h2 {
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    word-break: break-all;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+main > div > h3 {
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    word-break: break-all;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
 main > div > div {
     display: flex;
     flex-direction: row;
