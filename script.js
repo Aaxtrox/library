@@ -99,8 +99,7 @@ document.getElementById('updatePages').addEventListener('input', () => {
         document.getElementById('updatePages').value = document.getElementById('updatePages').value.slice(0, 15);
     }
     //if updatePages.value is less than 0 or empty
-    if (document.getElementById('updatePages').value < 0 ||
-    document.getElementById('updatePages').value == '') {
+    if (document.getElementById('updatePages').value < 0) {
         // assign updatePages to 0
         document.getElementById('updatePages').value = 0;
     }
@@ -108,6 +107,11 @@ document.getElementById('updatePages').addEventListener('input', () => {
 
 // save event listeners to save changes
 save.addEventListener('click', () => {
+    //if updatePages.value is empty
+    if (document.getElementById('updatePages').value == '') {
+        // assign updatePages to 0
+        document.getElementById('updatePages').value = 0;
+    }
     // grab input values from updatePages
     let updatePages = document.getElementById('updatePages').value;
 
