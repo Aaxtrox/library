@@ -105,23 +105,6 @@ document.getElementById('updatePages').addEventListener('input', () => {
     }
 });
 
-// save event listeners to save changes
-save.addEventListener('click', () => {
-    //if updatePages.value is empty
-    if (document.getElementById('updatePages').value == '') {
-        // assign updatePages to 0
-        document.getElementById('updatePages').value = 0;
-    }
-    // grab input values from updatePages
-    let updatePages = document.getElementById('updatePages').value;
-
-    // update pages to myLibrary array
-    myLibrary[cogsI].pages = updatePages + ' pages';
-
-    // run runUpdate function
-    runUpdate();
-});
-
 // cogsDiscard event listeners to hide pop up
 cogsDiscard.addEventListener('click', () => {
     // change cogsForm display to none
@@ -134,102 +117,127 @@ cogsDiscard.addEventListener('click', () => {
     enableHoover();
 });
 
-// Book constructor
-function Book(title, author, pages) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages + ' pages';
+// Define the Book class
+class Book {
+    constructor(title, author, pages) {
+      this.title = title;
+      this.author = author;
+      this.pages = pages + ' pages';
+    }
 }
-
-// addBookToLibrary function
-function addBookToLibrary() {
-    // grab input values
-    let title = document.getElementById('title').value;
-    let author = document.getElementById('author').value;
-    let pages = document.getElementById('pages').value;
-
-    // create new book object
-    let newBook = new Book(title, author, pages);
-
-    // push new book object to myLibrary array
-    myLibrary.push(newBook);
-
-    // run displayBooks function
-    displayBooks();
-
-    // run clearInput function
-    clearInput();
-}
-
-// displayBooks function
-function displayBooks() {
-    // clear everything inside main
-    document.getElementsByTagName('main')[0].innerHTML = '';
-
-    // loop through myLibrary array
-    for (let i = 0; i < myLibrary.length; i++) {
-
-        // create new div element inside main
-        let newDiv = document.createElement('div');
-        newDiv.classList.add('book');
-        // add newDiv to tag name main
-        document.getElementsByTagName('main')[0].appendChild(newDiv);
-
-        //create new h2 element inside newDiv
-        let newH2 = document.createElement('h2');
-        newH2.classList.add('title');
-        newH2.textContent = myLibrary[i].title;
-        newDiv.appendChild(newH2);
-
-        //create new h3 element inside newDiv
-        let newH3 = document.createElement('h3');
-        newH3.classList.add('author');
-        newH3.textContent = myLibrary[i].author;
-        newDiv.appendChild(newH3);
-
-        //create new h3 element inside newDiv
-        let newH3_2 = document.createElement('h3');
-        newH3_2.classList.add('pages');
-        newH3_2.textContent = myLibrary[i].pages;
-        newDiv.appendChild(newH3_2);
-
-        //create new div element inside newDiv
-        let newDiv_2 = document.createElement('div');
-        newDiv.appendChild(newDiv_2);
-
-        // create new cogs button element inside newDiv > newDiv_2
-        let newButton = document.createElement('button');
-        newButton.classList.add('cogs');
-        newButton.innerHTML = '<img src="./img/cogs.svg" alt="cogs">';
-        newDiv_2.appendChild(newButton);
-
-        // create new button element inside newDiv
-        let newButton_2 = document.createElement('button');
-        newButton_2.classList.add('deleteButton');
-        newButton_2.innerHTML = '<img src="./img/delete-forever.svg" alt="delete">';
-        newDiv_2.appendChild(newButton_2);
-
-        // newButton event listeners to display pop up
-        cogs[i].addEventListener('click', () => {
-            // set text content of updatePages to myLibrary[i].pages
-            document.getElementById('updatePages').value = parseInt(myLibrary[i].pages);
-
-            // change cogsForm display to block
-            cogsPopup.style.display = 'block';
-            // assign i to cogsI
-            cogsI = i;
-            // run disableHoover function
-            disableHoover();
-        });
-
-        // deleteButton event listeners to delete book
-        newButton_2.addEventListener('click', () => {
-            // remove book from myLibrary array
-            myLibrary.splice(i, 1);
-            // run displayBooks function
-            displayBooks();
+  
+// Define the Library class
+class Library {
+    constructor() {
+        this.myLibrary = [];
+    }
+  
+    addBookToLibrary(title, author, pages) {
+        const newBook = new Book(title, author, pages);
+        this.myLibrary.push(newBook);
+    }
+  
+    displayBooks() {
+        const main = document.getElementsByTagName('main')[0];
+        main.innerHTML = '';
+  
+        this.myLibrary.forEach((book, i) => {
+            const newDiv = document.createElement('div');
+            newDiv.classList.add('book');
+            main.appendChild(newDiv);
+    
+            const newH2 = document.createElement('h2');
+            newH2.classList.add('title');
+            newH2.textContent = book.title;
+            newDiv.appendChild(newH2);
+    
+            const newH3 = document.createElement('h3');
+            newH3.classList.add('author');
+            newH3.textContent = book.author;
+            newDiv.appendChild(newH3);
+  
+            const newH3_2 = document.createElement('h3');
+            newH3_2.classList.add('pages');
+            newH3_2.textContent = book.pages;
+            newDiv.appendChild(newH3_2);
+    
+            const newDiv_2 = document.createElement('div');
+            newDiv.appendChild(newDiv_2);
+    
+            const newButton = document.createElement('button');
+            newButton.classList.add('cogs');
+            newButton.innerHTML = '<img src="./img/cogs.svg" alt="cogs">';
+            newDiv_2.appendChild(newButton);
+  
+            const newButton_2 = document.createElement('button');
+            newButton_2.classList.add('deleteButton');
+            newButton_2.innerHTML = '<img src="./img/delete-forever.svg" alt="delete">';
+            newDiv_2.appendChild(newButton_2);
+  
+            newButton.addEventListener('click', () => {
+                document.getElementById('updatePages').value = parseInt(book.pages);
+                cogsPopup.style.display = 'block';
+                cogsI = i;
+                disableHoover();
+            });
+  
+            newButton_2.addEventListener('click', () => {
+                this.myLibrary.splice(i, 1);
+                this.displayBooks();
+            });
         });
     }
+}
+
+// Create a library instance
+const library = new Library();
+
+// save event listeners to save changes
+save.addEventListener('click', () => {
+    //if updatePages.value is empty
+    if (document.getElementById('updatePages').value == '') {
+        // assign updatePages to 0
+        document.getElementById('updatePages').value = 0;
+    }
+    // grab input values from updatePages
+    let updatePages = document.getElementById('updatePages').value
+    
+    // update pages to myLibrary array
+    library.myLibrary[cogsI].pages = updatePages + ' pages';
+
+    // run runUpdate function
+    runUpdate();
+});
+  
+// Refactor functions to use the library instance
+function addBookToLibrary() {
+    const title = document.getElementById('title').value;
+    const author = document.getElementById('author').value;
+    const pages = document.getElementById('pages').value;
+  
+    library.addBookToLibrary(title, author, pages);
+    library.displayBooks();
+    clearInput();
+}
+  
+function run() {
+    popup.style.display = 'none';
+    enableHoover();
+    addBookToLibrary();
+    clearInput();
+}
+  
+function runUpdate() {
+    enableHoover();
+    library.displayBooks();
+    document.getElementById('updatePages').value = '';
+    cogsPopup.style.display = 'none';
+}
+  
+function clearInput() {
+    document.getElementById('title').value = '';
+    document.getElementById('author').value = '';
+    document.getElementById('pages').value = '';
 }
 
 // function to disable hoover effect on buttons
@@ -274,43 +282,6 @@ function enableHoover() {
 
     // gray scale main
     main.style.filter = 'grayscale(0%)';
-}
-
-//function run
-function run() {
-    // change pop up display to none
-    popup.style.display = 'none';
-
-    // run enableHoover function
-    enableHoover();
-
-    // run addBookToLibrary function
-    addBookToLibrary();
-
-    // run clearInput function
-    clearInput();
-}
-
-//function runUpdate
-function runUpdate() {
-    // run enableHoover function
-    enableHoover();
-
-    // run displayBooks function
-    displayBooks();
-
-    // clear input values
-    document.getElementById('updatePages').value = '';
-    
-    // change cogsForm display to none
-    cogsPopup.style.display = 'none';
-}
-
-// function clear input values
-function clearInput() {
-    document.getElementById('title').value = '';
-    document.getElementById('author').value = '';
-    document.getElementById('pages').value = '';
 }
 
 //current year for links section
